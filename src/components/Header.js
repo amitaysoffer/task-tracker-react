@@ -1,11 +1,10 @@
-import { findByLabelText } from '@testing-library/react';
-import React from 'react';
-
-const Header = () => {
+const Header = ({ toggleForm }) => {
   return (
     <div style={styleHeader}>
       <h1 style={{ fontWeight: 400 }}>Task Tracker</h1>
-      <button className="btn">Close</button>
+      <button onClick={toggleForm} className="btn">
+        Close
+      </button>
     </div>
   );
 };

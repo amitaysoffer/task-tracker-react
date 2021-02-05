@@ -8,6 +8,24 @@
   border-radius: 5px;
 }
 
+.task {
+  background: #f2f2f2;
+  padding: 5px 15px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.delete {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 1.1em;
+  color: red;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
 form {
   margin-top: 1em;
 }
