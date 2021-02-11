@@ -1,14 +1,16 @@
-const Task = ({ text, day, id, deleteTask }) => {
-  const handleClick = e => {
-    deleteTask(e.target.parentElement.id);
-  };
+import { FiDelete } from 'react-icons/fi';
 
+const Task = ({ text, day, reminder, id, deleteTask, toggleReminder }) => {
   return (
-    <div className="task" id={`task-${id}`}>
+    <div
+      className={`task ${reminder ? 'reminder' : ''}`}
+      id={`task-${id}`}
+      onDoubleClick={() => toggleReminder(id)}
+    >
       <p>{text}</p>
       <p>{day}</p>
-      <button onClick={handleClick} className="delete">
-        X
+      <button onClick={e => deleteTask(`task-${id}`)} className="delete">
+        <FiDelete />
       </button>
     </div>
   );

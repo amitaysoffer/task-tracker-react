@@ -1,13 +1,9 @@
-const Button = ({ toggleForm, color, text }) => {
-  const toggleButton = () => {
-    toggleForm();
-  };
-
+const Button = ({ onShow, color, text }) => {
   return (
     <>
       <button
         className="btn"
-        onClick={toggleButton}
+        onClick={onShow}
         style={{ backgroundColor: color }}>
         {text}
       </button>

@@ -10,24 +10,32 @@ function App() {
   const [tasks, setTasks] = useState(data);
   const [isShowForm, setShowForm] = useState(false);
 
-  const addTask = (text, day, id) => {
-    setTasks(prevTasks => [...prevTasks, { text, day, id }]);
+  const addTask = (text, day, reminder, id) => {
+    setTasks(prevTasks => [...prevTasks, { text, day, reminder, id }]);
   };
 
   const deleteTask = id => {
+    console.log(id);
     const newTasks = tasks.filter(task => `task-${task.id}` !== id);
     setTasks(newTasks);
   };
 
-  const toggleForm = () => {
-    setShowForm(!isShowForm);
+  const toggleReminder = id => {
+    const updatedTask = tasks.map(task =>
+      task.id === id ? { ...task, reminder: !task.reminder } : task
+    );
+    setTasks(updatedTask);
   };
 
   return (
     <div className="App">
-      <Header toggleForm={toggleForm} isShowForm={isShowForm} />
+      <Header isShowForm={isShowForm} onShow={() => setShowForm(!isShowForm)} />
       {isShowForm && <AddTask addTask={addTask} />}
-      <Tasks tasks={tasks} deleteTask={deleteTask} />
+      <Tasks
+        tasks={tasks}
+        deleteTask={deleteTask}
+        toggleReminder={toggleReminder}
+      />
     </div>
   );
 }

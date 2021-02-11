@@ -1,16 +1,25 @@
 import Button from './Button';
+import PropTypes from 'prop-types';
 
-const Header = ({ toggleForm, isShowForm }) => {
+const Header = ({ onShow, isShowForm, title }) => {
   return (
     <div style={styleHeader}>
-      <h1 style={{ fontWeight: 400 }}>Task Tracker</h1>
+      <h1 style={{ fontWeight: 400 }}>{title}</h1>
       <Button
-        toggleForm={toggleForm}
+        onShow={onShow}
         color={isShowForm ? 'red' : 'green'}
         text={isShowForm ? 'Close' : 'Open'}
       />
     </div>
   );
+};
+
+Header.defaultProps = {
+  title: 'Task Tracker',
+};
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 const styleHeader = {
