@@ -1,10 +1,14 @@
-const Header = ({ toggleForm }) => {
+import Button from './Button';
+
+const Header = ({ toggleForm, isShowForm }) => {
   return (
     <div style={styleHeader}>
       <h1 style={{ fontWeight: 400 }}>Task Tracker</h1>
-      <button onClick={toggleForm} className="btn">
-        Close
-      </button>
+      <Button
+        toggleForm={toggleForm}
+        color={isShowForm ? 'red' : 'green'}
+        text={isShowForm ? 'Close' : 'Open'}
+      />
     </div>
   );
 };

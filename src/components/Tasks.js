@@ -1,15 +1,17 @@
-const Tasks = ({ text, day, id, deleteTask }) => {
-  const handleClick = e => {
-    deleteTask(e.target.parentElement.id);
-  };
+import Task from './Task';
 
+const Tasks = ({ tasks, deleteTask }) => {
   return (
-    <div className="task" id={`task-${id}`}>
-      <p>{text}</p>
-      <p>{day}</p>
-      <button onClick={handleClick} className="delete">
-        X
-      </button>
+    <div className="tasks">
+      {tasks.map(task => (
+        <Task
+          text={task.text}
+          day={task.day}
+          id={task.id}
+          key={task.id}
+          deleteTask={deleteTask}
+        />
+      ))}
     </div>
   );
 };

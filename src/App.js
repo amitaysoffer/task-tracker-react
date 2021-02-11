@@ -3,7 +3,7 @@ import './css/App.css';
 import './css/style.css';
 import data from './data';
 import Header from './components/Header';
-import Form from './components/Form';
+import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
 
 function App() {
@@ -25,19 +25,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header toggleForm={toggleForm} />
-      {isShowForm && <Form addTask={addTask} />}
-      <div className="tasks">
-        {tasks.map(task => (
-          <Tasks
-            text={task.text}
-            day={task.day}
-            id={task.id}
-            key={task.id}
-            deleteTask={deleteTask}
-          />
-        ))}
-      </div>
+      <Header toggleForm={toggleForm} isShowForm={isShowForm} />
+      {isShowForm && <AddTask addTask={addTask} />}
+      <Tasks tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 }
