@@ -3,13 +3,13 @@
     {
       "text": "aa",
       "day": "22",
-      "reminder": true,
+      "reminder": false,
       "id": 80
     },
     {
       "text": "tt",
       "day": "32",
-      "reminder": false,
+      "reminder": true,
       "id": 12
     }
   ]

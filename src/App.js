@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/App.css';
 import './css/style.css';
 // import data from './data';
 import Header from './components/Header';
+import Footer from './components/Footer';
+import About from './components/About';
 import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
 
@@ -76,19 +79,35 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header isShowForm={isShowForm} onShow={() => setShowForm(!isShowForm)} />
-      {isShowForm && <AddTask addTask={addTask} />}
-      {tasks.length > 0 ? (
-        <Tasks
-          tasks={tasks}
-          deleteTask={deleteTask}
-          toggleReminder={toggleReminder}
+    <Router>
+      <div className="App">
+        <Header
+          isShowForm={isShowForm}
+          onShow={() => setShowForm(!isShowForm)}
         />
-      ) : (
-        <h1>No Tasks To Show</h1>
-      )}
-    </div>
+
+        <Route
+          path="/"
+          exact
+          render={props => (
+            <>
+              {isShowForm && <AddTask addTask={addTask} />}
+              {tasks.length > 0 ? (
+                <Tasks
+                  tasks={tasks}
+                  deleteTask={deleteTask}
+                  toggleReminder={toggleReminder}
+                />
+              ) : (
+                <h1>No Tasks To Show</h1>
+              )}
+            </>
+          )}
+        />
+        <Route path="/about" component={About} />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
