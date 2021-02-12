@@ -3,7 +3,7 @@ import { useState } from 'react';
 const AddTask = ({ addTask }) => {
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
-  const [isReminder, setReminder] = useState(false);
+  const [reminder, setReminder] = useState(false);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -12,7 +12,7 @@ const AddTask = ({ addTask }) => {
       alert('Need to fill all fields');
     } else {
       const id = Math.floor(Math.random() * 100 + 1);
-      addTask(text, day, isReminder, id);
+      addTask({ text, day, reminder, id });
     }
 
     setText('');
@@ -21,8 +21,8 @@ const AddTask = ({ addTask }) => {
   };
 
   const handleReminder = () => {
-    console.log(isReminder);
-    setReminder(!isReminder);
+    console.log(reminder);
+    setReminder(!reminder);
   };
 
   return (
@@ -50,8 +50,8 @@ const AddTask = ({ addTask }) => {
         <input
           style={{ width: 'auto' }}
           type="checkbox"
-          checked={isReminder}
-          value={isReminder}
+          checked={reminder}
+          value={reminder}
           onChange={handleReminder}
         />
       </div>
